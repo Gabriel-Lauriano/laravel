@@ -1,0 +1,10 @@
+<h1>O primeiro valor é: {{ $p1 }}</h1>
+<h1>O Segundo valor valor é: {{ $p2 }}</h1>
+
+@if ($p1 < 0 || $p2 < 0)
+    <h1>Não é permitido valor menor que 0</h1>
+@elseif ($p1 == 0|| $p2 == 0)
+    <h1>Não é permitido valor menor que zero</h1>
+@else
+    <h1>O resultado da subtração é: {{ $p1 - $p2 }}</h1>
+@endif
