@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CursoController extends Controller
 {
     function inicial(){ 
-        return view('curso.inicial');
+        return view('curso.index');
     }
 
     function add(Request $dados) { 
@@ -18,6 +18,6 @@ class CursoController extends Controller
 				
         $cursos = new \App\Models\CursoModel();
 
-        return view('curso.inicial', ['success'=>'Cadastrado!', 'cursos'=>$cursos::all()]);
+        return view('curso.index', ['success'=>'Cadastrado!', 'cursos'=>$cursos::all()]);
     }
 }

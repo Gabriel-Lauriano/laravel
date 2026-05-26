@@ -19,14 +19,34 @@ use App\Http\Middleware\LogAcessoMiddleware;
 Route::prefix('/aluno')->group(function(){
     Route::get('/index', [App\Http\Controllers\AlunoController::class, 'index'])->name('aluno.index');
     Route::post('/add', [App\Http\Controllers\AlunoController::class, 'add'])->name('aluno.add');
+    Route::post('/atualizar', [App\Http\Controllers\AlunoController::class, 'atualizar'])->name('aluno.atualizar');
+    Route::post('/deletar', [App\Http\Controllers\AlunoController::class, 'atualizar'])->name('aluno.deletar');
 }); 
 
 Route::prefix('/curso')->group(function(){
-    Route::get('/inicial', [App\Http\Controllers\CursoController::class, 'inicial'])->name('curso.inicial');
+    Route::get('/inicial', [App\Http\Controllers\CursoController::class, 'index'])->name('curso.index');
     Route::post('/add', [App\Http\Controllers\CursoController::class, 'add'])->name('curso.add');
+    Route::post('/atualizar', [App\Http\Controllers\CursoController::class, 'atualizar'])->name('curso.atualizar');
+    Route::post('/deletar', [App\Http\Controllers\CursoController::class, 'deletar'])->name('curso.deletar');
 }); 
 
 Route::prefix('/professor')->group(function(){
     Route::get('/index', [App\Http\Controllers\ProfessorController::class, 'index'])->name('professor.index');
     Route::post('/add', [App\Http\Controllers\ProfessorController::class, 'add'])->name('professor.add');
+    Route::post('/atualizar', [App\Http\Controllers\ProfessorController::class, 'atualizar'])->name('professor.atualizar');
+    Route::post('/deletar', [App\Http\Controllers\ProfessorController::class, 'deletar'])->name('professor.deletar');
+}); 
+
+Route::prefix('/componente')->group(function(){
+    Route::get('/index', [App\Http\Controllers\ProfessorController::class, 'index'])->name('componente.index');
+    Route::post('/add', [App\Http\Controllers\ProfessorController::class, 'add'])->name('componente.add');
+    Route::post('/atualizar', [App\Http\Controllers\ProfessorController::class, 'atualizar'])->name('componente.atualizar');
+    Route::post('/deletar', [App\Http\Controllers\ProfessorController::class, 'deletar'])->name('componente.deletar');
+}); 
+
+Route::prefix('/administrador')->group(function(){
+    Route::get('/index', [App\Http\Controllers\ProfessorController::class, 'index'])->name('administrador.index');
+    Route::post('/add', [App\Http\Controllers\ProfessorController::class, 'add'])->name('administrador.add');
+    Route::post('/atualizar', [App\Http\Controllers\ProfessorController::class, 'atualizar'])->name('administrador.atualizar');
+    Route::post('/deletar', [App\Http\Controllers\ProfessorController::class, 'deletar'])->name('administrador.deletar');
 }); 
