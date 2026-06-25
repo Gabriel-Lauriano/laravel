@@ -1,0 +1,84 @@
+<div>
+    <form action="{{ route('administrador.adicionar') }}" method="post">
+        @csrf
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome">
+        <br>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <br>
+
+        <label for="telefone">Telefone</label>
+        <input type="text" name="telefone" id="telefone">
+        <br>
+
+        <label for="cpf">CPF</label>
+        <input type="text" name="cpf" id="cpf">
+        <br>
+
+        <label for="usuario">Usuario</label>
+        <input type="text" name="usuario" id="usuario">
+        <br>
+
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha">
+        <br>
+
+        <label for="status">Status</label>
+        <input type="text" name="status" id="status">
+        <br>
+
+        <button type="submit">Salvar</button>
+        @isset($success)
+            <h1>{{ $success }}</h1>
+        @endisset
+    </form>
+
+    
+    <table border="1">
+        <tr>
+            <td>Nome do Adm</td>
+            <td>Email</td>
+            <td>Telefone</td>
+            <td>CPF</td>
+            <td>Usuario</td>
+            <td>Status</td>
+            <td colspan="2">Ações</td>
+        </tr>
+        @isset($administradores)
+                @foreach($administradores as $administrador)
+                    <tr>
+                        <td>
+                            <h3>{{ $administrador->nome }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->email }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->telefone }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->cpf }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->usuario }}</h3>
+                        </td>
+                        <td>
+                            <h3>{{ $administrador->status }}</h3>
+                        </td>
+                        <td>
+                            <form action="{{ route('administrador.remove', ['id' => $administrador->id]) }}" method="GET">
+                                <button type="submit">Remover</button>
+                            </form>
+                        </td>
+                        <td>
+                        <form action="{{ route('administrador.atualizar', ['id' => $administrador->id]) }}" method="GET">
+                                <button type="submit">Atualizar</button>
+                        </form>
+                        </td>
+                    </tr>
+                @endforeach
+        @endisset
+    </table>
+</div>
