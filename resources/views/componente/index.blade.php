@@ -1,50 +1,61 @@
+
 <div>
-    
-<form action="{{ route('componente.adicionar') }}" method="post">
-    @csrf
-    <label for="Nome">Nome</label>
-    <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
+    <form action="{{ Route('componente.adicionar') }}" method="post">
+        @csrf
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
 
+        <label for="hora_inicio">Hora do Inicio</label>
+        <input type="datetime" name="hora_inicio" id="hora_inicio" value="{{ old('hora_inicio') }}">
 
-    <label for="hora_inicio">hora inicio</label>
-    <input type="hora_inicio" name="hora_inicio" id="hora_inicio">
+        <label for="hora_fim">Hora do Término</label>
+        <input type="datetime" name="hora_fim" id="hora_fim" value="{{ old('hora_fim') }}">
 
-    <label for="hora_fim">hora fim</label>
-    <input type="hora_fim" name="hora_fim" id="hora_fim">
+        <button type="submit">Salvar</button>
+        @isset($success)
+            <h1>{{ $success }}</h1> 
+        @endisset
 
-    <button type="submit">Salvar</button>
-    @isset($sucesso)
-    <h1> {{$sucesso}} </h1>
-    @endisset
-    @if($errors->any())
+        @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         @endif
-</form>
+    </form>
 
-        @isset($componente)
-                @foreach($componente as $componente)
-                    <tr>
-                        <td>
-                            <h3>{{ $componente->nome }}</h3>
-                        </td>
-                        <td>
-                        <form action="{{ route('componente.remove', ['id' => $componente->id]) }}" method="GET">
-                                <button type="submit">Remover</button>
-                            </form> 
-                        </td>
-                        <td>
-                        <form action="{{ route('componente.atualizar', ['id' => $componente->id]) }}" method="GET">
+    <table border="1">
+            <tr>
+                <td>Nome</td>
+                <td>Inicio</td>
+                <td>Fim</td>
+                <td colspan="2">Ações</td>
+            </tr>
+            @isset($componentes)
+                    @foreach($componentes as $componente)
+                        <tr>
+                            <td>
+                                <h3>{{ $componente->nome }}</h3>
+                            </td>
+                            <td>
+                                <h3>{{ $componente->hora_inicio }}</h3>
+                            </td>
+                            <td>
+                                <h3>{{ $componente->hora_fim }}</h3>
+                            </td>
+                            <td>
+                                <form action="{{ route('componente.remove', ['id' => $componente->id]) }}" method="GET">
+                                    <button type="submit">Remover</button>
+                                </form>
+                            </td>
+                            <td>
+                            <form action="{{ route('componente.atualizar', ['id' => $componente->id]) }}" method="GET">
                                 <button type="submit">Atualizar</button>
                             </form>
-                        </td>
-                    </tr>
-                @endforeach
-        @endisset
-
-
-
+                            </td>
+                        </tr>
+                    @endforeach
+            @endisset
+    </table>
 </div>

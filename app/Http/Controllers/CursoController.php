@@ -17,7 +17,7 @@ class CursoController extends Controller
             $dados->all(),
               [
                   'nome' => 'required|min:3|max:255',
-                  'periodo' => 'required|min:4|max:255',
+                  'periodo' => 'required|min:3|max:255',
 
               ],
               [
